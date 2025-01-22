@@ -122,6 +122,7 @@ namespace CppCLRWinFormsProject {
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"[2] - Change Calculator";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
 			// 
 			// button3
 			// 
@@ -180,6 +181,10 @@ private: System::Void inicialsToolStripMenuItem_Click(System::Object^ sender, Sy
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	bcalculator^ forma = gcnew bcalculator();
+	forma->Show();
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	chcalculator^ forma = gcnew chcalculator();
 	forma->Show();
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {

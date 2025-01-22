@@ -147,39 +147,39 @@ namespace CppCLRWinFormsProject {
 			if (k500 >= 1) {
 				textBox2->Text += k500.ToString();
 				textBox2->Text += " x 500";
-				if (k200 >= 1) textBox2->Text += " + ";
+				if (k200 >= 1 || k100 >= 1 || k50 >= 1 || k20 >= 1 || k10 >= 1 || k5 >= 1 || g > 0) textBox2->Text += " + ";
 			}
 			if (k200 >= 1) {
 				textBox2->Text += k200.ToString();
 				textBox2->Text += " x 200";
-				if (k100 >= 1) textBox2->Text += " + ";
+				if (k100 >= 1 || k50 >= 1 || k20 >= 1 || k10 >= 1 || k5 >= 1 || g > 0) textBox2->Text += " + ";
 			}
 			if (k100 >= 1) {
 				textBox2->Text += k100.ToString();
 				textBox2->Text += " x 100";
-				if (k50 >= 1) textBox2->Text += " + ";
+				if (k50 >= 1 || k20 >= 1 || k10 >= 1 || k5 >= 1 || g > 0) textBox2->Text += " + ";
 			}
 			if (k50 >= 1) {
 				textBox2->Text += k50.ToString();
 				textBox2->Text += " x 50";
-				if (k20 >= 1) textBox2->Text += " + ";
+				if (k20 >= 1 || k10 >= 1 || k5 >= 1 || g > 0) textBox2->Text += " + ";
 			}
 			if (k20 >= 1) {
 				textBox2->Text += k20.ToString();
 				textBox2->Text += " x 20";
-				if (k10 >= 1) textBox2->Text += " + ";
+				if (k10 >= 1 || k5 >= 1 || g > 0) textBox2->Text += " + ";
 			}
 			if (k10 >= 1) {
 				textBox2->Text += k10.ToString();
 				textBox2->Text += " x 10";
-				if (k5 >= 1) textBox2->Text += " + ";
+				if (k5 >= 1 || g > 0) textBox2->Text += " + ";
 			}
 			if (k5 >= 1) {
 				textBox2->Text += k5.ToString();
 				textBox2->Text += " x 5";
 				if (g > 0) textBox2->Text += " + ";
 			}
-			textBox2->Text += g.ToString();
+			if (g > 0) textBox2->Text += g.ToString();
 		}
 	}
 private: System::Void chcalculator_Load(System::Object^ sender, System::EventArgs^ e) {
