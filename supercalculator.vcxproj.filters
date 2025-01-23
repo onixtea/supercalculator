@@ -38,6 +38,9 @@
     <ClInclude Include="chcalculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pgenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
@@ -62,6 +65,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="chcalculator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pgenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

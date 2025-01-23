@@ -66,18 +66,18 @@ namespace CppCLRWinFormsProject {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(28, 15);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(78, 13);
+			this->label1->Size = System::Drawing::Size(97, 13);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Áveskite gràşà";
+			this->label1->Text = L"Enter your change:";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(28, 63);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(58, 13);
+			this->label2->Size = System::Drawing::Size(45, 13);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Atsakymas";
+			this->label2->Text = L"Answer:";
 			// 
 			// textBox1
 			// 
@@ -101,7 +101,7 @@ namespace CppCLRWinFormsProject {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(201, 28);
 			this->button1->TabIndex = 4;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"Calculate";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &chcalculator::button1_Click);
 			// 
@@ -109,12 +109,14 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 159);
+			this->ClientSize = System::Drawing::Size(261, 159);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->MaximizeBox = false;
 			this->Name = L"chcalculator";
 			this->Text = L"chcalculator";
 			this->Load += gcnew System::EventHandler(this, &chcalculator::chcalculator_Load);
@@ -127,6 +129,7 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		int x, y, z;
+		textBox2->Text = "";
 		if (textBox1->Text == "") {
 			label1->Text = "error: missing numbers";
 		}

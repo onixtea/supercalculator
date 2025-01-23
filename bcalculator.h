@@ -159,6 +159,7 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->MaximizeBox = false;
 			this->Name = L"bcalculator";
 			this->Text = L"basic calculator";
 			this->Load += gcnew System::EventHandler(this, &bcalculator::bcalculator_Load);

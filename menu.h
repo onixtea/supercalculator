@@ -1,6 +1,7 @@
 ﻿#include "signature.h"
 #include "chcalculator.h"
 #include "bcalculator.h"
+#include "pgenerator.h"
 #pragma once
 
 namespace CppCLRWinFormsProject {
@@ -132,16 +133,17 @@ namespace CppCLRWinFormsProject {
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"[3] - Exchange Calculator";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &Form1::button3_Click);
 			// 
 			// button4
 			// 
-			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(186)));
 			this->button4->Location = System::Drawing::Point(249, 201);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(23, 21);
 			this->button4->TabIndex = 4;
-			this->button4->Text = L"+";
+			this->button4->Text = L">>";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
 			// 
@@ -157,6 +159,7 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->menuStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MainMenuStrip = this->menuStrip1;
+			this->MaximizeBox = false;
 			this->Name = L"Form1";
 			this->Text = L"the supercalculator";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
@@ -179,33 +182,88 @@ private: System::Void inicialsToolStripMenuItem_Click(System::Object^ sender, Sy
 	signature^ forma = gcnew signature();
 	forma->Show();
 }
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	bcalculator^ forma = gcnew bcalculator();
-	forma->Show();
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	chcalculator^ forma = gcnew chcalculator();
-	forma->Show();
-}
+private: int x = 0; // this is for switching button modes (calc-misc-pass)
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	int x = 0;
-	if (button4->Text == "+") x = 0;
-	if (button4->Text == "-") x = 1;
+	switch (x) {
+	case 0:
+		x = 1;
+		break;
+	case 1:
+		x = 2;
+		break;
+	case 2:
+		x = 0;
+		break;
+	}
+
 	if (x == 0) {
+		button1->Text = L"[1] - Basic Calculator";
+		button1->Enabled = true;
+		button2->Text = L"[2] - Change Calculator";
+		button3->Text = L"[3] - Exchange Calculator";
+	}
+	else if (x == 1) {
 		button1->Text = L"[1] - US Debt Calculator";
 		button2->Text = L"[2] - Shopping Cart Calculator";
 		button3->Text = L"[3] - Investment Calculator";
-		button4->Text = L"-";
-		x = 1;
 	}
-	else if (x == 1) {
-		button1->Text = L"[1] - Basic Calculator";
-		button2->Text = L"[2] - Change Calculator";
-		button3->Text = L"[3] - Exchange Calculator";
-		button4->Text = L"+";
-		x = 0;
+	else if (x == 2) {
+		button1->Text = L"PASSWORD SYSTEM";
+		button1->Enabled = false;
+		button2->Text = L"[1] - Password Generator";
+		button3->Text = L"[2] - Generated Passwords";
 	}
 
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (x == 0) {
+		// Basic Calculator
+		bcalculator^ forma = gcnew bcalculator();
+		forma->Show();
+	}
+	if (x == 1) {
+		// US Debt Calculator
+		//bcalculator^ forma = gcnew bcalculator();
+		//forma->Show();
+		MessageBox::Show("us debt calc");
+	}
+	if (x == 2) {
+		// Password System
+		// This case will do nothing as button1 is disabled in x == 2
+	}
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (x == 0) {
+		// Change Calculator
+		chcalculator^ forma = gcnew chcalculator();
+		forma->Show();
+	}
+	if (x == 1) {
+		// Shopping Cart Calculator
+		//chcalculator^ forma = gcnew chcalculator();
+		//forma->Show();
+		MessageBox::Show("shopping cart calc");
+	}
+	if (x == 2) {
+		// Password Generator
+		pgenerator^ forma = gcnew pgenerator();
+		forma->Show();
+	}
+}
+
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (x == 0) {
+		// Exchange Calculator
+		MessageBox::Show("exchange calc");
+	}
+	if (x == 1) {
+		// Investment Calculator
+		MessageBox::Show("investment calc");
+	}
+	if (x == 2) {
+		// Generated Passwords
+		MessageBox::Show("generated passwords");
+	}
 }
 };
 }
