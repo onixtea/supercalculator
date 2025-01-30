@@ -138,7 +138,7 @@ namespace CppCLRWinFormsProject {
 			// comboBox1
 			// 
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"+", L"-", L"*", L"/", L"^", L"/*" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"+", L"-", L"*", L"/", L"^", L"√" });
 			this->comboBox1->Location = System::Drawing::Point(89, 44);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(47, 21);
@@ -178,11 +178,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	float x, y;
 	float z = 0;
 	bool err = false;
-	if (textBox1->Text != "") x = int::Parse(textBox1->Text);
-	if (textBox3->Text != "") y = int::Parse(textBox3->Text);
+	if (!Int32::TryParse(textBox1->Text, x)) { // runs thru a check if theres digits
+		err = true;
+	}
+	else x = int::Parse(textBox1->Text);
+	if (textBox3->Text == "") err = true;
+	else y = int::Parse(textBox3->Text);
 	char sign = '&';
 	sign = Convert::ToChar(comboBox1->SelectedItem->ToString());
-	if (sign == '/*') sign = '#';
+	if (comboBox1->SelectedIndex == 5) sign = '#'; // workaround cuz it doesnt accept sqr root symbol
 	switch (sign) {
 
 	case '+':
@@ -193,7 +197,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		break;
 	case '/':
 		z = x / y;
-		if (y == 0) err = true;
+		if (y == 0) {
+			textBox4->Text = "Error: Cannot divide by 0";
+			return;
+		}
 		break;
 	case '*':
 		z = x * y;
@@ -205,8 +212,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		z = sqrt(x);
 		break;
 	}
-	if (err == true) textBox4->Text = "error";
-	else textBox4->Text = z.ToString();
+	textBox4->Text = z.ToString();
 }
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (comboBox1->SelectedItem->ToString() == "√") textBox3->Enabled = false;

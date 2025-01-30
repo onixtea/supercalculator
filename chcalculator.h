@@ -118,7 +118,7 @@ namespace CppCLRWinFormsProject {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MaximizeBox = false;
 			this->Name = L"chcalculator";
-			this->Text = L"chcalculator";
+			this->Text = L"change calculator";
 			this->Load += gcnew System::EventHandler(this, &chcalculator::chcalculator_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -133,10 +133,11 @@ namespace CppCLRWinFormsProject {
 		textBox2->Text = "";
 		if (textBox1->Text == "") {
 			label1->Text = "Error: Missing numbers!";
+			return;
 		}
 		String^ checkdigit = textBox1->Text;
-		if (!Char::IsDigit(checkdigit[i]))
-		else {
+		//if (!Char::IsDigit(checkdigit[i]) == false) return;
+		//else {
 			int g;
 			int k500, k200, k100, k50, k20, k10, k5;
 
@@ -186,7 +187,7 @@ namespace CppCLRWinFormsProject {
 				if (g > 0) textBox2->Text += " + ";
 			}
 			if (g > 0) textBox2->Text += g.ToString();
-		}
+		//}
 	}
 private: System::Void chcalculator_Load(System::Object^ sender, System::EventArgs^ e) {
 }
