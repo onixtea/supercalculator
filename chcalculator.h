@@ -129,10 +129,13 @@ namespace CppCLRWinFormsProject {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		int x, y, z;
+		label1->Text = "Enter your change:";
 		textBox2->Text = "";
 		if (textBox1->Text == "") {
-			label1->Text = "error: missing numbers";
+			label1->Text = "Error: Missing numbers!";
 		}
+		String^ checkdigit = textBox1->Text;
+		if (!Char::IsDigit(checkdigit[i]))
 		else {
 			int g;
 			int k500, k200, k100, k50, k20, k10, k5;

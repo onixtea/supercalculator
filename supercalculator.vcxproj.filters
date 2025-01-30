@@ -41,6 +41,9 @@
     <ClInclude Include="pgenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="plist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
@@ -71,6 +74,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pgenerator1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -74,7 +74,7 @@ namespace CppCLRWinFormsProject {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(23, 21);
+			this->label1->Location = System::Drawing::Point(23, 9);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(92, 13);
 			this->label1->TabIndex = 0;
@@ -84,7 +84,7 @@ namespace CppCLRWinFormsProject {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(23, 89);
+			this->label2->Location = System::Drawing::Point(23, 76);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(109, 13);
 			this->label2->TabIndex = 1;
@@ -92,15 +92,17 @@ namespace CppCLRWinFormsProject {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(26, 37);
+			this->textBox1->Location = System::Drawing::Point(27, 25);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 20);
 			this->textBox1->TabIndex = 2;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(26, 105);
+			this->textBox2->BackColor = System::Drawing::SystemColors::Window;
+			this->textBox2->Location = System::Drawing::Point(26, 95);
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->ReadOnly = true;
 			this->textBox2->Size = System::Drawing::Size(246, 20);
 			this->textBox2->TabIndex = 3;
 			// 
@@ -109,14 +111,14 @@ namespace CppCLRWinFormsProject {
 			this->checkedListBox1->CheckOnClick = true;
 			this->checkedListBox1->FormattingEnabled = true;
 			this->checkedListBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Letters", L"Numbers", L"Symbols", L"(Case-sensitive)" });
-			this->checkedListBox1->Location = System::Drawing::Point(152, 37);
+			this->checkedListBox1->Location = System::Drawing::Point(152, 25);
 			this->checkedListBox1->Name = L"checkedListBox1";
 			this->checkedListBox1->Size = System::Drawing::Size(120, 64);
 			this->checkedListBox1->TabIndex = 4;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(26, 131);
+			this->button1->Location = System::Drawing::Point(26, 121);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(246, 23);
 			this->button1->TabIndex = 5;
@@ -127,7 +129,7 @@ namespace CppCLRWinFormsProject {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(149, 21);
+			this->label3->Location = System::Drawing::Point(149, 9);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(97, 13);
 			this->label3->TabIndex = 6;
@@ -136,11 +138,11 @@ namespace CppCLRWinFormsProject {
 			// checkBox1
 			// 
 			this->checkBox1->AutoSize = true;
-			this->checkBox1->Location = System::Drawing::Point(26, 63);
+			this->checkBox1->Location = System::Drawing::Point(26, 51);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(100, 17);
+			this->checkBox1->Size = System::Drawing::Size(101, 17);
 			this->checkBox1->TabIndex = 7;
-			this->checkBox1->Text = L"Save Password";
+			this->checkBox1->Text = L"Convert to .wav";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &pgenerator::checkBox1_CheckedChanged);
 			// 
@@ -148,7 +150,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(295, 161);
+			this->ClientSize = System::Drawing::Size(295, 149);
 			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->button1);
@@ -168,6 +170,7 @@ namespace CppCLRWinFormsProject {
 		}
 #pragma endregion
 	private: System::Void pgenerator_Load(System::Object^ sender, System::EventArgs^ e) {
+		srand(time(NULL));
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -177,7 +180,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	const string upletterset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	const string lowletterset = "abcdefghijklmnopqrstuvwxyz";
 	const string numset = "0123456789";
-	const string symset = "!@#$%^&*()_+{}|:<>?~";
+	const string symset = "!@#$%^&*()_+{}:<>?~";
 
 	if (checkedListBox1->GetItemChecked(0) == true) {
 		charset += upletterset;
@@ -191,9 +194,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	if (checkedListBox1->GetItemChecked(2) == true) {
 		charset += symset;
 	}
-	if (charset.empty()) textBox2->Text = "Error: No character set selected!";
+	if (charset.empty()) {
+		textBox2->Text = "Error: No character set selected!";
+		return;
+	}
 
-	srand(time(NULL));
 	string password = "";
 	if (textBox1->Text != "") {
 		int passlength = int::Parse(textBox1->Text);
@@ -204,11 +209,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	else textBox2->Text = "Error: No length selected!";
 
-	if (checkBox1->Checked == true) {
 		IO::StreamWriter^ writer = gcnew IO::StreamWriter("passwords.txt", true); // 'true' to append
 		writer->WriteLine(gcnew String(password.c_str()));  // Write the password
 		writer->Close();
-	}
 }
 private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 }

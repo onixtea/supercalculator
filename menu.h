@@ -2,6 +2,7 @@
 #include "chcalculator.h"
 #include "bcalculator.h"
 #include "pgenerator.h"
+#include "plist.h"
 #pragma once
 
 namespace CppCLRWinFormsProject {
@@ -240,8 +241,6 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (x == 1) {
 		// Shopping Cart Calculator
-		//chcalculator^ forma = gcnew chcalculator();
-		//forma->Show();
 		MessageBox::Show("shopping cart calc");
 	}
 	if (x == 2) {
@@ -262,7 +261,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (x == 2) {
 		// Generated Passwords
-		MessageBox::Show("generated passwords");
+		plist^ forma = gcnew plist();
+		forma->Show();
 	}
 }
 };

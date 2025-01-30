@@ -143,6 +143,9 @@
     <ClInclude Include="pgenerator.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="plist.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Resource.h" />
     <ClInclude Include="signature.h">
       <FileType>CppForm</FileType>
@@ -163,6 +166,7 @@
     </ClCompile>
     <ClCompile Include="pgenerator.cpp" />
     <ClCompile Include="pgenerator1.cpp" />
+    <ClCompile Include="plist.cpp" />
     <ClCompile Include="signature.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pgenerator.resx">
       <DependentUpon>pgenerator.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="plist.resx">
+      <DependentUpon>plist.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="signature.resx">
       <DependentUpon>signature.h</DependentUpon>
