@@ -174,18 +174,42 @@ namespace CppCLRWinFormsProject {
 	}
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+bool IsInputError(String^ InputCheck) {
+	if (InputCheck->Length > 0) {
+		for (int i = 0; i < InputCheck->Length; i++) {
+			if (!Char::IsDigit(InputCheck[i])) return true;
+		}
+	}
+	else return true;
+	if (InputCheck == "Number") return true;
+	return false;
+}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	float x, y;
 	float z = 0;
-	bool err = false;
-	if (!Int32::TryParse(textBox1->Text, x)) { // runs thru a check if theres digits
-		err = true;
+
+	bool InputError = false;
+	String^ InputCheck = textBox1->Text;
+	InputError = IsInputError(InputCheck);
+	if (InputError == true || comboBox1->SelectedIndex == -1) {
+		textBox4->Text = "Error: Invalid Input";
+		return;
 	}
-	else x = int::Parse(textBox1->Text);
-	if (textBox3->Text == "") err = true;
-	else y = int::Parse(textBox3->Text);
+	if (comboBox1->SelectedIndex != 5) {
+		InputCheck = textBox3->Text;
+		InputError = IsInputError(InputCheck);
+		if (InputError == true || comboBox1->SelectedIndex == -1) {
+			textBox4->Text = "Error: Invalid Input";
+			return;
+		}
+	}
+
+	x = int::Parse(textBox1->Text);
+	if (comboBox1->SelectedIndex != 5) y = int::Parse(textBox3->Text);
 	char sign = '&';
 	sign = Convert::ToChar(comboBox1->SelectedItem->ToString());
+
+
 	if (comboBox1->SelectedIndex == 5) sign = '#'; // workaround cuz it doesnt accept sqr root symbol
 	switch (sign) {
 
@@ -215,7 +239,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	textBox4->Text = z.ToString();
 }
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (comboBox1->SelectedItem->ToString() == "√") textBox3->Enabled = false;
+	if (comboBox1->SelectedIndex == 5) {
+		textBox3->Enabled = false;
+		textBox3->Text = "2";
+	}
+	else {
+		textBox3->Enabled = true;
+		textBox3->Text = "";
+		textBox3->ForeColor = System::Drawing::SystemColors::WindowText;
+	}
 }
 
 private: System::Void textBox3_Enter(System::Object^ sender, System::EventArgs^ e) {

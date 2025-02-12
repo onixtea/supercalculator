@@ -127,17 +127,25 @@ namespace CppCLRWinFormsProject {
 #pragma endregion
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
+	bool IsInputError(String^ InputCheck) {
+	if (InputCheck->Length > 0) {
+		for (int i = 0; i < InputCheck->Length; i++) {
+			if (!Char::IsDigit(InputCheck[i])) return true;
+		}
+	}
+	else return true;
+	return false;
+	}	
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		int x, y, z;
 		label1->Text = "Enter your change:";
 		textBox2->Text = "";
-		if (textBox1->Text == "") {
-			label1->Text = "Error: Missing numbers!";
+		String^ InputCheck = textBox1->Text;
+		if (IsInputError(InputCheck)) {
+			textBox2->Text = "Error: Invalid Input";
 			return;
 		}
-		String^ checkdigit = textBox1->Text;
-		//if (!Char::IsDigit(checkdigit[i]) == false) return;
-		//else {
+
 			int g;
 			int k500, k200, k100, k50, k20, k10, k5;
 
