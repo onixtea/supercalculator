@@ -1,6 +1,6 @@
 #pragma once
 
-namespace supercalculator {
+namespace CppCLRWinFormsProject {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -35,6 +35,7 @@ namespace supercalculator {
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	protected:
 
 	private:
@@ -51,6 +52,8 @@ namespace supercalculator {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -62,18 +65,36 @@ namespace supercalculator {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"SHOPPING CART CALCULATOR";
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->ImageLocation = L"carts\\ikicart.png";
+			this->pictureBox1->Location = System::Drawing::Point(199, 104);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(166, 154);
+			this->pictureBox1->TabIndex = 1;
+			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &shcalculator::pictureBox1_Click);
+			// 
 			// shcalculator
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(593, 458);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Name = L"shcalculator";
 			this->Text = L"shcalculator";
+			this->Load += gcnew System::EventHandler(this, &shcalculator::shcalculator_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	private: System::Void shcalculator_Load(System::Object^ sender, System::EventArgs^ e) {
+	//	pictureBox1->Image = "nocart.png";
+	}
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }
