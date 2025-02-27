@@ -195,7 +195,7 @@ namespace CppCLRWinFormsProject {
 				if (g > 0) textBox2->Text += " + ";
 			}
 			if (g > 0) textBox2->Text += g.ToString();
-		//}
+		//just testing
 	}
 private: System::Void chcalculator_Load(System::Object^ sender, System::EventArgs^ e) {
 }
