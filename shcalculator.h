@@ -36,6 +36,7 @@ namespace CppCLRWinFormsProject {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 	protected:
 
 	private:
@@ -53,13 +54,14 @@ namespace CppCLRWinFormsProject {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(196, 32);
+			this->label1->Location = System::Drawing::Point(208, 22);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(169, 13);
 			this->label1->TabIndex = 0;
@@ -67,19 +69,28 @@ namespace CppCLRWinFormsProject {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->ImageLocation = L"carts\\ikicart.png";
-			this->pictureBox1->Location = System::Drawing::Point(199, 104);
+			this->pictureBox1->ImageLocation = L"carts\\nocart.png";
+			this->pictureBox1->Location = System::Drawing::Point(211, 101);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(166, 154);
+			this->pictureBox1->Size = System::Drawing::Size(166, 166);
 			this->pictureBox1->TabIndex = 1;
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->Click += gcnew System::EventHandler(this, &shcalculator::pictureBox1_Click);
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(89, 337);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(399, 21);
+			this->comboBox1->TabIndex = 2;
 			// 
 			// shcalculator
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(593, 458);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Name = L"shcalculator";
