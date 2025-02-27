@@ -1,2 +1,3 @@
-literally a supercalculator in c++, what else could you want?
-small little project thats a way for me to learn windows forms
+small c++ project where i learn how to use windows forms
+utilising every possible item from the toolbox
+it's a *supercalculator*
