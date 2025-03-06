@@ -38,12 +38,16 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 
-	private: System::Windows::Forms::MonthCalendar^ monthCalendar1;
+
 	private: System::Windows::Forms::DomainUpDown^ domainUpDown1;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::LinkLabel^ linkLabel1;
-	private: System::Windows::Forms::Label^ label3;
+
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Button^ button1;
 
 
 
@@ -66,12 +70,14 @@ namespace CppCLRWinFormsProject {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->monthCalendar1 = (gcnew System::Windows::Forms::MonthCalendar());
 			this->domainUpDown1 = (gcnew System::Windows::Forms::DomainUpDown());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -107,15 +113,9 @@ namespace CppCLRWinFormsProject {
 			this->comboBox1->TabIndex = 2;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &shcalculator::comboBox1_SelectedIndexChanged);
 			// 
-			// monthCalendar1
-			// 
-			this->monthCalendar1->Location = System::Drawing::Point(361, 370);
-			this->monthCalendar1->Name = L"monthCalendar1";
-			this->monthCalendar1->TabIndex = 4;
-			// 
 			// domainUpDown1
 			// 
-			this->domainUpDown1->Location = System::Drawing::Point(118, 380);
+			this->domainUpDown1->Location = System::Drawing::Point(89, 379);
 			this->domainUpDown1->Name = L"domainUpDown1";
 			this->domainUpDown1->Size = System::Drawing::Size(120, 20);
 			this->domainUpDown1->TabIndex = 5;
@@ -124,7 +124,7 @@ namespace CppCLRWinFormsProject {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(103, 429);
+			this->comboBox2->Location = System::Drawing::Point(266, 378);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 21);
 			this->comboBox2->TabIndex = 6;
@@ -132,42 +132,76 @@ namespace CppCLRWinFormsProject {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(371, 309);
+			this->label2->Location = System::Drawing::Point(408, 381);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(35, 13);
+			this->label2->Size = System::Drawing::Size(86, 13);
 			this->label2->TabIndex = 7;
-			this->label2->Text = L"label2";
+			this->label2->Text = L"Pricing based on";
 			// 
 			// linkLabel1
 			// 
 			this->linkLabel1->AutoSize = true;
-			this->linkLabel1->Location = System::Drawing::Point(451, 313);
+			this->linkLabel1->Location = System::Drawing::Point(490, 381);
 			this->linkLabel1->Name = L"linkLabel1";
-			this->linkLabel1->Size = System::Drawing::Size(55, 13);
+			this->linkLabel1->Size = System::Drawing::Size(91, 13);
 			this->linkLabel1->TabIndex = 8;
 			this->linkLabel1->TabStop = true;
-			this->linkLabel1->Text = L"linkLabel1";
+			this->linkLabel1->Text = L"the discount table";
+			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &shcalculator::linkLabel1_LinkClicked);
 			// 
-			// label3
+			// label4
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(532, 320);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(35, 13);
-			this->label3->TabIndex = 9;
-			this->label3->Text = L"label3";
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(186)));
+			this->label4->Location = System::Drawing::Point(225, 381);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(25, 13);
+			this->label4->TabIndex = 10;
+			this->label4->Text = L"OR";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(327, 470);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(100, 13);
+			this->label5->TabIndex = 11;
+			this->label5->Text = L"price will amount to:";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 26.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(186)));
+			this->label6->Location = System::Drawing::Point(433, 449);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(148, 39);
+			this->label6->TabIndex = 12;
+			this->label6->Text = L"399.99$";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(81, 460);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(128, 23);
+			this->button1->TabIndex = 13;
+			this->button1->Text = L"Delivery Date";
+			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// shcalculator
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(593, 513);
-			this->Controls->Add(this->label3);
+			this->ClientSize = System::Drawing::Size(593, 510);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
 			this->Controls->Add(this->linkLabel1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->domainUpDown1);
-			this->Controls->Add(this->monthCalendar1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
@@ -182,6 +216,9 @@ namespace CppCLRWinFormsProject {
 #pragma endregion
 	private: System::Void shcalculator_Load(System::Object^ sender, System::EventArgs^ e) {
 	//	pictureBox1->Image = "nocart.png";
+		domainUpDown1->Items->Add("select cart");
+		domainUpDown1->SelectedIndex = 0;
+
 	}
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -213,6 +250,43 @@ namespace CppCLRWinFormsProject {
 						pictureBox1->ImageLocation = "carts\\shoppingcart.png";
 						pictureBox1->Size = System::Drawing::Size(800, 445);
 					}
+					domainUpDown1->Items->Clear();
+					switch (selection) { // for changing variety options
+					case 0:
+						domainUpDown1->Items->Add("blank");
+						domainUpDown1->Items->Add("kid-size cart");
+						break;
+					case 1:
+						domainUpDown1->Items->Add("black");
+						domainUpDown1->Items->Add("blue");
+						domainUpDown1->Items->Add("green");
+						domainUpDown1->Items->Add("gray");
+						domainUpDown1->Items->Add("red");
+						break;
+					case 2:
+						domainUpDown1->Items->Add("black");
+						domainUpDown1->Items->Add("blue");
+						domainUpDown1->Items->Add("green");
+						domainUpDown1->Items->Add("dark green");
+						domainUpDown1->Items->Add("gray");
+						domainUpDown1->Items->Add("red");
+						domainUpDown1->Items->Add("metal wire");
+						break;
+					case 3:
+						domainUpDown1->Items->Add("black");
+						domainUpDown1->Items->Add("blue");
+						domainUpDown1->Items->Add("green");
+						domainUpDown1->Items->Add("red");
+						break;
+					default:
+						domainUpDown1->Items->Add("select cart");
+						break;
+					}
+					domainUpDown1->SelectedIndex = 0;
+					domainUpDown1->Invalidate();  // Invalidate the control, marking it for a redraw
+					domainUpDown1->Refresh();
     }
+private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+}
 };
 }
