@@ -102,6 +102,7 @@ namespace CppCLRWinFormsProject {
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"metal heavy duty shopping cart", L"recycled plastic shopping cart",
@@ -115,19 +116,25 @@ namespace CppCLRWinFormsProject {
 			// 
 			// domainUpDown1
 			// 
+			this->domainUpDown1->Enabled = false;
 			this->domainUpDown1->Location = System::Drawing::Point(89, 379);
 			this->domainUpDown1->Name = L"domainUpDown1";
+			this->domainUpDown1->ReadOnly = true;
 			this->domainUpDown1->Size = System::Drawing::Size(120, 20);
 			this->domainUpDown1->TabIndex = 5;
-			this->domainUpDown1->Text = L"domainUpDown1";
+			this->domainUpDown1->Text = L"select cart";
 			// 
 			// comboBox2
 			// 
+			this->comboBox2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox2->Enabled = false;
 			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"no livery" });
 			this->comboBox2->Location = System::Drawing::Point(266, 378);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 21);
 			this->comboBox2->TabIndex = 6;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &shcalculator::comboBox2_SelectedIndexChanged);
 			// 
 			// label2
 			// 
@@ -216,77 +223,115 @@ namespace CppCLRWinFormsProject {
 #pragma endregion
 	private: System::Void shcalculator_Load(System::Object^ sender, System::EventArgs^ e) {
 	//	pictureBox1->Image = "nocart.png";
-		domainUpDown1->Items->Add("select cart");
-		domainUpDown1->SelectedIndex = 0;
-
+		comboBox2->SelectedIndex = 0;
 	}
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-    private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-					int selection = comboBox1->SelectedIndex;
-					/* 0 = metal cart
-					*  1 = plastic cart
-					*  2 = handbasket
-					*  3 = rolling handbasket
-					* -1 = no cart */
-					switch (selection) { // for changing image
-					case 0:
-						pictureBox1->ImageLocation = "carts\\metalcart\\metalcart.png";
-                        pictureBox1->Size = System::Drawing::Size(646, 600);
-						break;
-					case 1:
-						pictureBox1->ImageLocation = "carts\\plasticcart\\blackplasticcart.png";
-						pictureBox1->Size = System::Drawing::Size(700, 700);
-						break;
-					case 2:
-						pictureBox1->ImageLocation = "carts\\handcart\\blackhandcart.png";
-						pictureBox1->Size = System::Drawing::Size(700, 700);
-						break;
-					case 3:
-						pictureBox1->ImageLocation = "carts\\rollingcart\\blackrollingcart.png";
-						pictureBox1->Size = System::Drawing::Size(700, 700);
-						break;
-					case -1:
-						pictureBox1->ImageLocation = "carts\\shoppingcart.png";
-						pictureBox1->Size = System::Drawing::Size(800, 445);
-					}
-					domainUpDown1->Items->Clear();
-					switch (selection) { // for changing variety options
-					case 0:
-						domainUpDown1->Items->Add("blank");
-						domainUpDown1->Items->Add("kid-size cart");
-						break;
-					case 1:
-						domainUpDown1->Items->Add("black");
-						domainUpDown1->Items->Add("blue");
-						domainUpDown1->Items->Add("green");
-						domainUpDown1->Items->Add("gray");
-						domainUpDown1->Items->Add("red");
-						break;
-					case 2:
-						domainUpDown1->Items->Add("black");
-						domainUpDown1->Items->Add("blue");
-						domainUpDown1->Items->Add("green");
-						domainUpDown1->Items->Add("dark green");
-						domainUpDown1->Items->Add("gray");
-						domainUpDown1->Items->Add("red");
-						domainUpDown1->Items->Add("metal wire");
-						break;
-					case 3:
-						domainUpDown1->Items->Add("black");
-						domainUpDown1->Items->Add("blue");
-						domainUpDown1->Items->Add("green");
-						domainUpDown1->Items->Add("red");
-						break;
-					default:
-						domainUpDown1->Items->Add("select cart");
-						break;
-					}
-					domainUpDown1->SelectedIndex = 0;
-					domainUpDown1->Invalidate();  // Invalidate the control, marking it for a redraw
-					domainUpDown1->Refresh();
-    }
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		comboBox2->Enabled = true; // so they start working once i say they start working
+		domainUpDown1->Enabled = true;
+		comboBox2->Items->Clear();
+		int selection = comboBox1->SelectedIndex;
+		/* 0 = metal cart
+		*  1 = plastic cart
+		*  2 = handbasket
+		*  3 = rolling handbasket
+		* -1 = no cart */
+		switch (selection) { // for changing image
+		case 0:
+			pictureBox1->ImageLocation = "carts\\metalcart\\metalcart.png";
+			pictureBox1->Size = System::Drawing::Size(646, 600);
+			break;
+		case 1:
+			pictureBox1->ImageLocation = "carts\\plasticcart\\blackplasticcart.png";
+			pictureBox1->Size = System::Drawing::Size(700, 700);
+			break;
+		case 2:
+			pictureBox1->ImageLocation = "carts\\handcart\\blackhandcart.png";
+			pictureBox1->Size = System::Drawing::Size(700, 700);
+			break;
+		case 3:
+			pictureBox1->ImageLocation = "carts\\rollingcart\\blackrollingcart.png";
+			pictureBox1->Size = System::Drawing::Size(700, 700);
+			break;
+		case -1:
+			pictureBox1->ImageLocation = "carts\\shoppingcart.png";
+			pictureBox1->Size = System::Drawing::Size(800, 445);
+		}
+		domainUpDown1->Items->Clear(); // have to do this mess of code because it wont auto otherwise
+		domainUpDown1->Items->Add("select cart");
+		domainUpDown1->Items->Add("blank");
+		domainUpDown1->Items->Add("kid-size cart");
+		domainUpDown1->Items->Add("black");
+		domainUpDown1->Items->Add("blue");
+		domainUpDown1->Items->Add("green");
+		domainUpDown1->Items->Add("dark green");
+		domainUpDown1->Items->Add("gray");
+		domainUpDown1->Items->Add("red");
+		domainUpDown1->Items->Add("metal wire");
+		switch (selection) { // for changing variety options
+		case 0:
+			domainUpDown1->Items->Remove("select cart");
+			domainUpDown1->Items->Remove("black");
+			domainUpDown1->Items->Remove("blue");
+			domainUpDown1->Items->Remove("green");
+			domainUpDown1->Items->Remove("dark green");
+			domainUpDown1->Items->Remove("gray");
+			domainUpDown1->Items->Remove("red");
+			domainUpDown1->Items->Remove("metal wire");
+			break;
+		case 1:
+			domainUpDown1->Items->Remove("select cart");
+			domainUpDown1->Items->Remove("green");
+			domainUpDown1->Items->Remove("metal wire");
+			domainUpDown1->Items->Remove("blank");
+			domainUpDown1->Items->Remove("kid-size cart");
+			break;
+		case 2:
+			domainUpDown1->Items->Remove("select cart");
+			domainUpDown1->Items->Remove("blank");
+			domainUpDown1->Items->Remove("kid-size cart");
+			break;
+		case 3:
+			domainUpDown1->Items->Remove("select cart");
+			domainUpDown1->Items->Remove("dark green");
+			domainUpDown1->Items->Remove("gray");
+			domainUpDown1->Items->Remove("metal wire");
+			domainUpDown1->Items->Remove("blank");
+			domainUpDown1->Items->Remove("kid-size cart");
+			break;
+		}
+		domainUpDown1->SelectedIndex = 0;
+
+		switch (selection) { // for changing livery options
+		case 0:
+			comboBox2->Items->Add("no livery");
+			comboBox2->Items->Add("iki livery");
+			comboBox2->Items->Add("maxima livery");
+			comboBox2->Items->Add("rimi livery");
+			comboBox2->Items->Add("lidl livery");
+			break;
+		case 1:
+			comboBox2->Items->Add("no livery");
+			comboBox2->Items->Add("iki livery");
+			comboBox2->Items->Add("maxima livery");
+			comboBox2->Items->Add("rimi livery");
+			comboBox2->Items->Add("lidl livery");
+			break;
+		case 2:
+			comboBox2->Items->Add("no livery");
+			comboBox2->Items->Add("exclusive maxima livery");
+			break;
+		case 3:
+			comboBox2->Items->Add("no livery");
+			break;
+		}
+	}
 private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+}
+private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (comboBox2->SelectedIndex != 0) domainUpDown1->Enabled = false;
+	else domainUpDown1->Enabled = true;
 }
 };
 }
