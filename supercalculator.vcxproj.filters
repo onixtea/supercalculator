@@ -88,9 +88,6 @@
     <ClCompile Include="shcalculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shcalendar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="usdebtcalc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

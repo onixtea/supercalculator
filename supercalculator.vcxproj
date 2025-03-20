@@ -174,7 +174,6 @@
     <ClCompile Include="pgenerator1.cpp" />
     <ClCompile Include="plist.cpp" />
     <ClCompile Include="shcalculator.cpp" />
-    <ClCompile Include="shcalendar.cpp" />
     <ClCompile Include="signature.cpp" />
     <ClCompile Include="usdebtcalc.cpp" />
   </ItemGroup>
