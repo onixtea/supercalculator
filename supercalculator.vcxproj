@@ -150,10 +150,10 @@
     <ClInclude Include="shcalculator.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="shcalendar.h">
+    <ClInclude Include="signature.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="signature.h">
+    <ClInclude Include="usdebtcalc.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -176,6 +176,7 @@
     <ClCompile Include="shcalculator.cpp" />
     <ClCompile Include="shcalendar.cpp" />
     <ClCompile Include="signature.cpp" />
+    <ClCompile Include="usdebtcalc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
@@ -206,11 +207,11 @@
     <EmbeddedResource Include="shcalculator.resx">
       <DependentUpon>shcalculator.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="shcalendar.resx">
-      <DependentUpon>shcalendar.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="signature.resx">
       <DependentUpon>signature.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usdebtcalc.resx">
+      <DependentUpon>usdebtcalc.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

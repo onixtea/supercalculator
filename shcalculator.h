@@ -1,5 +1,4 @@
 #pragma once
-
 namespace CppCLRWinFormsProject {
 
 	using namespace System;
@@ -41,13 +40,14 @@ namespace CppCLRWinFormsProject {
 
 	private: System::Windows::Forms::DomainUpDown^ domainUpDown1;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::LinkLabel^ linkLabel1;
+
+
 
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Button^ button1;
+
+
 
 
 
@@ -72,19 +72,16 @@ namespace CppCLRWinFormsProject {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->domainUpDown1 = (gcnew System::Windows::Forms::DomainUpDown());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(208, 22);
+			this->label1->Location = System::Drawing::Point(218, 21);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(169, 13);
 			this->label1->TabIndex = 0;
@@ -93,9 +90,9 @@ namespace CppCLRWinFormsProject {
 			// pictureBox1
 			// 
 			this->pictureBox1->ImageLocation = L"carts\\nocart.png";
-			this->pictureBox1->Location = System::Drawing::Point(211, 101);
+			this->pictureBox1->Location = System::Drawing::Point(200, 101);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(166, 166);
+			this->pictureBox1->Size = System::Drawing::Size(200, 200);
 			this->pictureBox1->TabIndex = 1;
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->Click += gcnew System::EventHandler(this, &shcalculator::pictureBox1_Click);
@@ -123,6 +120,7 @@ namespace CppCLRWinFormsProject {
 			this->domainUpDown1->Size = System::Drawing::Size(120, 20);
 			this->domainUpDown1->TabIndex = 5;
 			this->domainUpDown1->Text = L"select cart";
+			this->domainUpDown1->SelectedItemChanged += gcnew System::EventHandler(this, &shcalculator::domainUpDown1_SelectedItemChanged);
 			// 
 			// comboBox2
 			// 
@@ -135,26 +133,6 @@ namespace CppCLRWinFormsProject {
 			this->comboBox2->Size = System::Drawing::Size(121, 21);
 			this->comboBox2->TabIndex = 6;
 			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &shcalculator::comboBox2_SelectedIndexChanged);
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(408, 381);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(86, 13);
-			this->label2->TabIndex = 7;
-			this->label2->Text = L"Pricing based on";
-			// 
-			// linkLabel1
-			// 
-			this->linkLabel1->AutoSize = true;
-			this->linkLabel1->Location = System::Drawing::Point(490, 381);
-			this->linkLabel1->Name = L"linkLabel1";
-			this->linkLabel1->Size = System::Drawing::Size(91, 13);
-			this->linkLabel1->TabIndex = 8;
-			this->linkLabel1->TabStop = true;
-			this->linkLabel1->Text = L"the discount table";
-			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &shcalculator::linkLabel1_LinkClicked);
 			// 
 			// label4
 			// 
@@ -170,7 +148,7 @@ namespace CppCLRWinFormsProject {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(327, 470);
+			this->label5->Location = System::Drawing::Point(327, 425);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(100, 13);
 			this->label5->TabIndex = 11;
@@ -181,39 +159,27 @@ namespace CppCLRWinFormsProject {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 26.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(186)));
-			this->label6->Location = System::Drawing::Point(433, 449);
+			this->label6->Location = System::Drawing::Point(433, 404);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(148, 39);
 			this->label6->TabIndex = 12;
 			this->label6->Text = L"399.99$";
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(81, 460);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(128, 23);
-			this->button1->TabIndex = 13;
-			this->button1->Text = L"Delivery Date";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
 			// shcalculator
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(593, 510);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(593, 456);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->linkLabel1);
-			this->Controls->Add(this->label2);
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->domainUpDown1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Name = L"shcalculator";
-			this->Text = L"shcalculator";
+			this->Text = L"shopping cart calculator";
 			this->Load += gcnew System::EventHandler(this, &shcalculator::shcalculator_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
@@ -228,6 +194,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		UpdatePrice();
 		comboBox2->Enabled = true; // so they start working once i say they start working
 		domainUpDown1->Enabled = true;
 		comboBox2->Items->Clear();
@@ -240,23 +207,18 @@ namespace CppCLRWinFormsProject {
 		switch (selection) { // for changing image
 		case 0:
 			pictureBox1->ImageLocation = "carts\\metalcart\\metalcart.png";
-			pictureBox1->Size = System::Drawing::Size(646, 600);
 			break;
 		case 1:
 			pictureBox1->ImageLocation = "carts\\plasticcart\\blackplasticcart.png";
-			pictureBox1->Size = System::Drawing::Size(700, 700);
 			break;
 		case 2:
 			pictureBox1->ImageLocation = "carts\\handcart\\blackhandcart.png";
-			pictureBox1->Size = System::Drawing::Size(700, 700);
 			break;
 		case 3:
 			pictureBox1->ImageLocation = "carts\\rollingcart\\blackrollingcart.png";
-			pictureBox1->Size = System::Drawing::Size(700, 700);
 			break;
 		case -1:
 			pictureBox1->ImageLocation = "carts\\shoppingcart.png";
-			pictureBox1->Size = System::Drawing::Size(800, 445);
 		}
 		domainUpDown1->Items->Clear(); // have to do this mess of code because it wont auto otherwise
 		domainUpDown1->Items->Add("select cart");
@@ -330,8 +292,137 @@ namespace CppCLRWinFormsProject {
 private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 }
 private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	UpdatePrice();
 	if (comboBox2->SelectedIndex != 0) domainUpDown1->Enabled = false;
 	else domainUpDown1->Enabled = true;
+	int selectedIndex1 = comboBox1->SelectedIndex;
+	int selectedIndex2 = comboBox2->SelectedIndex;
+	if (selectedIndex1 >= 0 && selectedIndex1 <= 1) {
+		if (selectedIndex2 >= 1 && selectedIndex2 <= 4) {
+			switch (selectedIndex2) {
+			case 1:
+				pictureBox1->ImageLocation = "carts\\shopcarts\\ikicart.png";
+				break;
+			case 2:
+				pictureBox1->ImageLocation = "carts\\shopcarts\\maximacart.png";
+				break;
+			case 3:
+				pictureBox1->ImageLocation = "carts\\shopcarts\\rimicart.png";
+				break;
+			case 4:
+				pictureBox1->ImageLocation = "carts\\shopcarts\\lidlcart.png";
+				break;
+			}
+		}
+		if (selectedIndex1 == 2) {
+			switch (selectedIndex1) {
+			case 0:
+				pictureBox1->ImageLocation = "";
+				break;
+			case 1:
+				pictureBox1->ImageLocation = "";
+				break;
+			case 2:
+				pictureBox1->ImageLocation = "carts\\shopcarts\\maximacarter.png";
+				break;
+			default:
+				pictureBox1->ImageLocation = "";
+				break;
+			}
+		}
+	}
+
 }
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void UpdatePrice() {
+	double basePrice = 0.0;
+	double additionalPrice = 0.0;
+
+	
+	switch (comboBox1->SelectedIndex) {
+	case 0: basePrice = 253.96; break;
+	case 1: basePrice = 288.86; break;
+	case 2: basePrice = 14.9; break;
+	case 3: basePrice = 35.5;
+	}
+
+	if (comboBox2->SelectedIndex >= 1 && comboBox2->SelectedIndex <= 4) additionalPrice = 80;
+
+	else if (domainUpDown1->SelectedIndex != 0) additionalPrice += 30;
+
+	double finalPrice = basePrice + additionalPrice;
+
+	label6->Text = finalPrice.ToString("F2") + "$";
+}
+private: System::Void domainUpDown1_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e) {
+	UpdatePrice();
+	String^ selectedItem = domainUpDown1->Text;
+	if (comboBox1->SelectedIndex == 0) {
+		if (selectedItem == "blank") {
+			pictureBox1->ImageLocation = "carts\\metalcart\\metalcart.png";
+		}
+		else if (selectedItem == "kid-size cart") {
+			pictureBox1->ImageLocation = "carts\\metalcart\\kidmetalcart.png";
+		}
+	}
+	if (comboBox1->SelectedIndex == 1) {
+		if (selectedItem == "black") {
+			pictureBox1->ImageLocation = "carts\\plasticcart\\blackplasticcart.png";
+		}
+		else if (selectedItem == "blue") {
+			pictureBox1->ImageLocation = "carts\\plasticcart\\blueplasticcart.png";
+		}
+		else if (selectedItem == "dark green") {
+			pictureBox1->ImageLocation = "carts\\plasticcart\\darkgreenplasticcart.png";
+		}
+		else if (selectedItem == "gray") {
+			pictureBox1->ImageLocation = "carts\\plasticcart\\greyplasticcart.png";
+		}
+		else if (selectedItem == "red") {
+			pictureBox1->ImageLocation = "carts\\plasticcart\\redplasticcart.png";
+		}
+	}
+	if (comboBox1->SelectedIndex == 2) {
+		if (selectedItem == "black") {
+			pictureBox1->ImageLocation = "carts\\handcart\\blackhandcart.png";
+		}
+		else if (selectedItem == "blue") {
+			pictureBox1->ImageLocation = "carts\\handcart\\bluehandcart.png";
+		}
+		else if (selectedItem == "green") {
+			pictureBox1->ImageLocation = "carts\\handcart\\greenhandcart.png";
+		}
+		else if (selectedItem == "dark green") {
+			pictureBox1->ImageLocation = "carts\\handcart\\darkgreenhandcart.png";
+		}
+		else if (selectedItem == "gray") {
+			pictureBox1->ImageLocation = "carts\\handcart\\greyhandcart.png";
+		}
+		else if (selectedItem == "red") {
+			pictureBox1->ImageLocation = "carts\\handcart\\redhandcart.png";
+		}
+		else if (selectedItem == "metal wire") {
+			pictureBox1->ImageLocation = "carts\\handcart\\wirehandcart.png";
+		}
+
+	}
+	if (comboBox1->SelectedIndex == 3) {
+		if (selectedItem == "black") {
+			pictureBox1->ImageLocation = "carts\\rollingcart\\blackrollingcart.png";
+		}
+		else if (selectedItem == "blue") {
+			pictureBox1->ImageLocation = "carts\\rollingcart\\bluerollingcart.png";
+		}
+		else if (selectedItem == "green") {
+			pictureBox1->ImageLocation = "carts\\rollingcart\\greenrollingcart.png";
+		}
+		else if (selectedItem == "red") {
+			pictureBox1->ImageLocation = "carts\\rollingcart\\redrollingcart.png";
+		}
+	}
+}		
 };
 }

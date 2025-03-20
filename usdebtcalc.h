@@ -1,6 +1,8 @@
 #pragma once
-
-namespace supercalculator {
+#include <thread>
+#include <chrono>
+#include <ctime>
+namespace CppCLRWinFormsProject {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -10,12 +12,12 @@ namespace supercalculator {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for shcalendar
+	/// Summary for usdebtcalc
 	/// </summary>
-	public ref class shcalendar : public System::Windows::Forms::Form
+	public ref class usdebtcalc : public System::Windows::Forms::Form
 	{
 	public:
-		shcalendar(void)
+		usdebtcalc(void)
 		{
 			InitializeComponent();
 			//
@@ -27,15 +29,13 @@ namespace supercalculator {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~shcalendar()
+		~usdebtcalc()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::MonthCalendar^ monthCalendar1;
-	protected:
 
 	private:
 		/// <summary>
@@ -50,26 +50,13 @@ namespace supercalculator {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->monthCalendar1 = (gcnew System::Windows::Forms::MonthCalendar());
-			this->SuspendLayout();
-			// 
-			// monthCalendar1
-			// 
-			this->monthCalendar1->Location = System::Drawing::Point(18, 18);
-			this->monthCalendar1->Name = L"monthCalendar1";
-			this->monthCalendar1->TabIndex = 0;
-			// 
-			// shcalendar
-			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->components = gcnew System::ComponentModel::Container();
+			this->Size = System::Drawing::Size(300,300);
+			this->Text = L"usdebtcalc";
+			this->Padding = System::Windows::Forms::Padding(0);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(396, 192);
-			this->Controls->Add(this->monthCalendar1);
-			this->Name = L"shcalendar";
-			this->Text = L"shcalendar";
-			this->ResumeLayout(false);
-
 		}
 #pragma endregion
+		
 	};
 }

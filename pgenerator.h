@@ -46,7 +46,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::CheckedListBox^ checkedListBox1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::CheckBox^ checkBox1;
+
 
 	private:
 		/// <summary>
@@ -68,7 +68,6 @@ namespace CppCLRWinFormsProject {
 			this->checkedListBox1 = (gcnew System::Windows::Forms::CheckedListBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -135,23 +134,11 @@ namespace CppCLRWinFormsProject {
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Password Settings:";
 			// 
-			// checkBox1
-			// 
-			this->checkBox1->AutoSize = true;
-			this->checkBox1->Location = System::Drawing::Point(26, 51);
-			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(101, 17);
-			this->checkBox1->TabIndex = 7;
-			this->checkBox1->Text = L"Convert to .wav";
-			this->checkBox1->UseVisualStyleBackColor = true;
-			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &pgenerator::checkBox1_CheckedChanged);
-			// 
 			// pgenerator
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(295, 149);
-			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->checkedListBox1);

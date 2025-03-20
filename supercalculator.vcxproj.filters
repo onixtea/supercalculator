@@ -47,7 +47,7 @@
     <ClInclude Include="shcalculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shcalendar.h">
+    <ClInclude Include="usdebtcalc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,6 +89,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="shcalendar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usdebtcalc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

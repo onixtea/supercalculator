@@ -4,6 +4,8 @@
 #include "pgenerator.h"
 #include "plist.h"
 #include "shcalculator.h"
+#include "usdebtcalc.h"
+//#include "usdebtcalc.h"
 #pragma once
 
 namespace CppCLRWinFormsProject {
@@ -225,9 +227,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (x == 1) {
 		// US Debt Calculator
-		//bcalculator^ forma = gcnew bcalculator();
-		//forma->Show();
-		MessageBox::Show("us debt calc");
+		MessageBox::Show("us debt calculator");
 	}
 	if (x == 2) {
 		// Password System
